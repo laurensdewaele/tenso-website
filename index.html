@@ -85,8 +85,8 @@
       }
 
       nav {
-        margin-top: 10vh;
-        margin-bottom: 10vh;
+        margin-top: 5vh;
+        margin-bottom: 20vh;
       }
 
       h1 {
@@ -116,10 +116,24 @@
 
       main {
         height: 100vh;
-        margin-bottom: 10vh;
+        margin-bottom: 20vh;
       }
 
-      main > div {
+      h3 {
+        font-family: "Staatliches";
+        color: var(--lightest-gray);
+        margin: 0;
+        font-size: 1.45rem;
+      }
+
+      .description-container {
+        height: 5%;
+        display: flex;
+        justify-self: center;
+        align-items: center;
+      }
+
+      .image-container {
         height: 95%;
         display: flex;
         flex-direction: row;
@@ -128,7 +142,6 @@
       }
 
       #left-arrow {
-        margin-right: 1rem;
         margin-left: 0.5rem;
       }
 
@@ -138,7 +151,6 @@
       }
 
       #right-arrow {
-        margin-left: 1rem;
         margin-right: 0.5rem;
       }
 
@@ -165,6 +177,12 @@
         color: var(--broken-white);
         font-size: 1.5rem;
       }
+
+      @media only screen and (max-width: 550px) {
+        #image {
+          max-width: 85%;
+        }
+      }
     </style>
     <script
       async
@@ -187,38 +205,64 @@
 
         const image = document.getElementById("image");
         const images = {
-          1: "./assets/images/screenshots/1.jpg",
-          2: "./assets/images/screenshots/2.jpg",
-          3: "./assets/images/screenshots/3.jpg",
-          4: "./assets/images/screenshots/4.jpg",
-          5: "./assets/images/screenshots/5.jpg",
-          6: "./assets/images/screenshots/6.jpg",
-          7: "./assets/images/screenshots/7.jpg",
+          1: "./assets/images/screenshots/1.png",
+          2: "./assets/images/screenshots/2.png",
+          3: "./assets/images/screenshots/3.png",
+          4: "./assets/images/screenshots/4.png",
+          5: "./assets/images/screenshots/5.png",
+          6: "./assets/images/screenshots/6.png",
+          7: "./assets/images/screenshots/7.png",
+          8: "./assets/images/screenshots/8.png",
+          9: "./assets/images/screenshots/9.png",
+        };
+        const header = document.getElementById("header");
+        const headers = {
+          1: "clear workout guidance",
+          2: "variable rest timer",
+          3: "intuitive grip and hold selection",
+          4: "advanced variable entry",
+          5: "ability to adjust hung values",
+          6: "calendar overview",
+          7: "advanced stats",
+          8: "proper workout overview",
+          9: "create your own board",
         };
 
         var currentImage = 1;
+        var currentHeader = 1;
         const lastImage = Object.keys(images).length;
+        const lastHeader = Object.keys(headers).length;
 
         const setImage = (no) => {
           image.src = images[no];
         };
 
+        const setHeader = (no) => {
+          header.innerText = headers[no];
+        };
+
         const previousImage = () => {
           if (currentImage == 1) {
             currentImage = lastImage;
+            currentHeader = lastHeader;
           } else {
             currentImage--;
+            currentHeader--;
           }
           setImage(currentImage);
+          setHeader(currentHeader);
         };
 
         const nextImage = () => {
           if (currentImage == lastImage) {
             currentImage = 1;
+            currentHeader = 1;
           } else {
             currentImage++;
+            currentHeader++;
           }
           setImage(currentImage);
+          setHeader(currentHeader);
         };
 
         const leftArrow = document.getElementById("left-arrow");
@@ -301,7 +345,10 @@
       <h2>A powerful tool for effective hangboard training</h2>
     </nav>
     <main>
-      <div>
+      <div class="description-container">
+        <h3 id="header">Clear workout guidance</h3>
+      </div>
+      <div class="image-container">
         <svg
           id="left-arrow"
           width="25"
@@ -315,7 +362,7 @@
             fill="#DC5858"
           />
         </svg>
-        <img id="image" src="./assets/images/screenshots/1.jpg" />
+        <img id="image" src="./assets/images/screenshots/1.png" />
         <svg
           id="right-arrow"
           width="25"

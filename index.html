@@ -62,11 +62,42 @@
           8: "proper workout overview",
           9: "create your own board",
         };
+        const imageIndicatorRow = document.getElementsByClassName("image-indicator-row")[0];
+        const imageIndicatorChecked = document.getElementsByClassName('circle-checked')[0];
+        const imageIndicatorUnchecked = document.getElementsByClassName('circle-unchecked')[0];
+
+        const setImageIndicator = (no) => {
+          while (imageIndicatorRow.firstChild) {
+            imageIndicatorRow.removeChild(imageIndicatorRow.lastChild);
+          }
+
+
+
+          for (let imagesKey in images) {
+            const uncheckedClone = imageIndicatorUnchecked.cloneNode(true);
+            const checkedClone = imageIndicatorChecked.cloneNode(true);
+
+            if (parseInt(imagesKey) === no) {
+              const imageIndicatorContainer = document.createElement('div');
+              imageIndicatorContainer.className = "image-indicator-container";
+              imageIndicatorContainer.appendChild(checkedClone);
+              imageIndicatorRow.appendChild(imageIndicatorContainer);
+            } else {
+              const imageIndicatorContainer = document.createElement('div');
+              imageIndicatorContainer.className = "image-indicator-container";
+              imageIndicatorContainer.appendChild(uncheckedClone);
+              imageIndicatorRow.appendChild(imageIndicatorContainer);
+            }
+          }
+        }
+
 
         let currentImage = 1;
         let currentHeader = 1;
+        setImageIndicator(1);
         const lastImage = Object.keys(images).length;
         const lastHeader = Object.keys(headers).length;
+
 
         const setImage = (no) => {
           image.src = images[no];
@@ -84,6 +115,7 @@
             currentImage--;
             currentHeader--;
           }
+          setImageIndicator(currentImage);
           setImage(currentImage);
           setHeader(currentHeader);
         };
@@ -96,6 +128,7 @@
             currentImage++;
             currentHeader++;
           }
+          setImageIndicator(currentImage);
           setImage(currentImage);
           setHeader(currentHeader);
         };
@@ -207,6 +240,14 @@
             fill="#DC5858"
           />
         </svg>
+      </div>
+      <div class="image-indicator-row">
+        <div class="image-indicator-container">
+          <img class="circle-checked" src="assets/images/circle_checked.svg" alt="current image indicator" />
+        </div>
+        <div class="image-indicator-container">
+          <img class="circle-unchecked" src="assets/images/circle_unchecked.svg" alt="available image indicator" />
+        </div>
       </div>
     </main>
     <footer>

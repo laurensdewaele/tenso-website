@@ -63,8 +63,8 @@
           9: "create your own board",
         };
 
-        var currentImage = 1;
-        var currentHeader = 1;
+        let currentImage = 1;
+        let currentHeader = 1;
         const lastImage = Object.keys(images).length;
         const lastHeader = Object.keys(headers).length;
 
@@ -77,7 +77,7 @@
         };
 
         const previousImage = () => {
-          if (currentImage == 1) {
+          if (currentImage === 1) {
             currentImage = lastImage;
             currentHeader = lastHeader;
           } else {
@@ -89,7 +89,7 @@
         };
 
         const nextImage = () => {
-          if (currentImage == lastImage) {
+          if (currentImage === lastImage) {
             currentImage = 1;
             currentHeader = 1;
           } else {
@@ -109,8 +109,8 @@
         document.addEventListener("touchstart", handleTouchStart, false);
         document.addEventListener("touchmove", handleTouchMove, false);
 
-        var xDown = null;
-        var yDown = null;
+        let xDown = null;
+        let yDown = null;
 
         function getTouches(evt) {
           return (
@@ -129,11 +129,11 @@
             return;
           }
 
-          var xUp = evt.touches[0].clientX;
-          var yUp = evt.touches[0].clientY;
+          let xUp = evt.touches[0].clientX;
+          let yUp = evt.touches[0].clientY;
 
-          var xDiff = xDown - xUp;
-          var yDiff = yDown - yUp;
+          let xDiff = xDown - xUp;
+          let yDiff = yDown - yUp;
 
           if (Math.abs(xDiff) > Math.abs(yDiff)) {
             if (xDiff > 0) {
@@ -147,19 +147,15 @@
           yDown = null;
         }
 
-        const checkKey = (e) => {
-          e = e || window.event;
-
-          if (e.keyCode == "37") {
+        document.addEventListener("keydown", e => {
+          if (e.code === "ArrowLeft") {
             previousImage();
           }
 
-          if (e.keyCode == "39") {
+          if (e.code === "ArrowRight") {
             nextImage();
           }
-        };
-
-        document.onkeydown = checkKey;
+        })
 
         const imageSources = Object.values(images);
         imageSources.shift();
@@ -197,7 +193,7 @@
             fill="#DC5858"
           />
         </svg>
-        <img id="image" src="./assets/images/screenshots/1.png" />
+        <img id="image" src="./assets/images/screenshots/1.png" alt="app screenshot" />
         <svg
           id="right-arrow"
           width="25"
@@ -215,10 +211,10 @@
     </main>
     <footer>
       <a href="https://play.google.com/store/apps/details?id=tenso.app"
-        ><img id="google-play" src="./assets/images/google_play.png"
+        ><img id="google-play" src="./assets/images/google_play.png" alt="google play icon"
       /></a>
       <a href="https://apps.apple.com/us/app/id1524978466"
-        ><img id="app-store" src="./assets/images/app_store.svg"
+        ><img id="app-store" src="./assets/images/app_store.svg" alt="app store icon"
       /></a>
       <a id="email" href="mailto:hello.tenso.app@gmail.com"
         ><button>contact</button></a

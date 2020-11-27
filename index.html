@@ -33,11 +33,22 @@
       gtag("config", "G-YDRMPDMHZZ");
     </script>
     <script>
-      const load = () => {
-        const height = window.innerHeight;
-        const main = document.getElementsByTagName("main")[0];
-        main.setAttribute("style", `height: ${height}px`);
-
+      const loadMenuToggle = () => {
+        const hamburgerIcon = document.getElementById("hamburger-icon");
+        const closeIcon = document.getElementById("close-icon");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const toggle = () => {
+          hamburgerIcon.classList.toggle("hide");
+          closeIcon.classList.toggle("reveal");
+          mobileMenu.classList.toggle("open");
+        };
+        hamburgerIcon.addEventListener("click", toggle);
+        mobileMenu.addEventListener("click", toggle);
+        closeIcon.addEventListener("click", toggle);
+      };
+    </script>
+    <script>
+      const loadImageTransitions = () => {
         const image = document.getElementById("image");
         const images = {
           1: "./assets/images/screenshots/1.png",
@@ -48,7 +59,7 @@
           6: "./assets/images/screenshots/6.png",
           7: "./assets/images/screenshots/7.png",
           8: "./assets/images/screenshots/8.png",
-          9: "./assets/images/screenshots/9.png",
+          9: "./assets/images/screenshots/9.png"
         };
         const header = document.getElementById("header");
         const headers = {
@@ -60,37 +71,39 @@
           6: "calendar overview",
           7: "advanced stats",
           8: "proper workout overview",
-          9: "create your own board",
+          9: "create your own board"
         };
-        const imageIndicatorRow = document.getElementsByClassName("image-indicator-row")[0];
-        const imageIndicatorChecked = document.getElementsByClassName('circle-checked')[0];
-        const imageIndicatorUnchecked = document.getElementsByClassName('circle-unchecked')[0];
+        const imageIndicatorRow = document.getElementsByClassName(
+          "image-indicator-row"
+        )[0];
+        const imageIndicatorChecked = document.getElementsByClassName(
+          "circle-checked"
+        )[0];
+        const imageIndicatorUnchecked = document.getElementsByClassName(
+          "circle-unchecked"
+        )[0];
 
-        const setImageIndicator = (no) => {
+        const setImageIndicator = no => {
           while (imageIndicatorRow.firstChild) {
             imageIndicatorRow.removeChild(imageIndicatorRow.lastChild);
           }
-
-
-
           for (let imagesKey in images) {
             const uncheckedClone = imageIndicatorUnchecked.cloneNode(true);
             const checkedClone = imageIndicatorChecked.cloneNode(true);
 
             if (parseInt(imagesKey) === no) {
-              const imageIndicatorContainer = document.createElement('div');
+              const imageIndicatorContainer = document.createElement("div");
               imageIndicatorContainer.className = "image-indicator-container";
               imageIndicatorContainer.appendChild(checkedClone);
               imageIndicatorRow.appendChild(imageIndicatorContainer);
             } else {
-              const imageIndicatorContainer = document.createElement('div');
+              const imageIndicatorContainer = document.createElement("div");
               imageIndicatorContainer.className = "image-indicator-container";
               imageIndicatorContainer.appendChild(uncheckedClone);
               imageIndicatorRow.appendChild(imageIndicatorContainer);
             }
           }
-        }
-
+        };
 
         let currentImage = 1;
         let currentHeader = 1;
@@ -98,12 +111,11 @@
         const lastImage = Object.keys(images).length;
         const lastHeader = Object.keys(headers).length;
 
-
-        const setImage = (no) => {
+        const setImage = no => {
           image.src = images[no];
         };
 
-        const setHeader = (no) => {
+        const setHeader = no => {
           header.innerText = headers[no];
         };
 
@@ -188,28 +200,84 @@
           if (e.code === "ArrowRight") {
             nextImage();
           }
-        })
+        });
 
         const imageSources = Object.values(images);
         imageSources.shift();
-        imageSources.forEach((src) => {
+        imageSources.forEach(src => {
           const preload = new Image();
           preload.src = src;
         });
       };
 
+      const load = () => {
+        loadMenuToggle();
+        loadImageTransitions();
+      };
+
       window.onload = load;
     </script>
-
     <title>Tenso</title>
   </head>
   <body>
-    <nav>
+    <div id="mobile-icon-container">
+      <svg
+        id="hamburger-icon"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="20" height="2" rx="1" fill="#DC5858" />
+        <rect y="9" width="20" height="2" rx="1" fill="#DC5858" />
+        <rect y="18" width="20" height="2" rx="1" fill="#DC5858" />
+      </svg>
+      <svg
+        id="close-icon"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          width="25.9628"
+          height="2.16357"
+          rx="1.08178"
+          transform="matrix(0.704904 0.709303 -0.704904 0.709303 1.69824 0)"
+          fill="#DC5858"
+        />
+        <rect
+          width="25.9628"
+          height="2.16357"
+          rx="1.08178"
+          transform="matrix(0.704904 -0.709303 0.704904 0.709302 0 18.4654)"
+          fill="#DC5858"
+        />
+      </svg>
+    </div>
+    <nav role="navigation" id="mobile-nav">
       <h1><a href="./index.html">Tenso</a></h1>
+      <ul id="mobile-menu">
+        <li><a href="./index.html" class="nav-underline">home</a></li>
+        <li><a href="./protocols.html">protocols</a></li>
+        <li>
+          <a href="mailto:hello.tenso.app@gmail.com">contact</a>
+        </li>
+      </ul>
+    </nav>
+    <nav role="navigation" id="desktop-nav">
+      <div class="title-container">
+        <h1><a href="./index.html">Tenso</a></h1>
+        <h2>Powerful hangboard tooling</h2>
+      </div>
       <ul>
         <li><a href="./index.html" class="nav-underline">home</a></li>
         <li><a href="./protocols.html">protocols</a></li>
-        <li><a id="email" href="mailto:hello.tenso.app@gmail.com">contact</a></li>
+        <li>
+          <a href="mailto:hello.tenso.app@gmail.com">contact</a>
+        </li>
       </ul>
     </nav>
     <main>
@@ -230,7 +298,11 @@
             fill="#DC5858"
           />
         </svg>
-        <img id="image" src="./assets/images/screenshots/1.png" alt="app screenshot" />
+        <img
+          id="image"
+          src="./assets/images/screenshots/1.png"
+          alt="app screenshot"
+        />
         <svg
           id="right-arrow"
           width="25"
@@ -247,19 +319,33 @@
       </div>
       <div class="image-indicator-row">
         <div class="image-indicator-container">
-          <img class="circle-checked" src="assets/images/circle_checked.svg" alt="current image indicator" />
+          <img
+            class="circle-checked"
+            src="assets/images/circle_checked.svg"
+            alt="current image indicator"
+          />
         </div>
         <div class="image-indicator-container">
-          <img class="circle-unchecked" src="assets/images/circle_unchecked.svg" alt="available image indicator" />
+          <img
+            class="circle-unchecked"
+            src="assets/images/circle_unchecked.svg"
+            alt="available image indicator"
+          />
         </div>
       </div>
     </main>
     <footer>
       <a href="https://play.google.com/store/apps/details?id=tenso.app"
-        ><img id="google-play" src="./assets/images/google_play.png" alt="google play icon"
+        ><img
+          id="google-play"
+          src="./assets/images/google_play.png"
+          alt="google play icon"
       /></a>
       <a href="https://apps.apple.com/us/app/id1524978466"
-        ><img id="app-store" src="./assets/images/app_store.svg" alt="app store icon"
+        ><img
+          id="app-store"
+          src="./assets/images/app_store.svg"
+          alt="app store icon"
       /></a>
     </footer>
   </body>

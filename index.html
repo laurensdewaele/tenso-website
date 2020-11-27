@@ -33,7 +33,9 @@
     </script>
     <script>
       const loadMenuToggle = () => {
-        const mobileIconContainer = document.getElementById("mobile-icon-container");
+        const mobileIconContainer = document.getElementById(
+          "mobile-icon-container"
+        );
         const hamburgerIcon = document.getElementById("hamburger-icon");
         const closeIcon = document.getElementById("close-icon");
         const mobileMenu = document.getElementById("mobile-menu");
@@ -215,6 +217,110 @@
 
       window.onload = load;
     </script>
+    <style>
+      #index-main > * {
+        user-select: none;
+      }
+
+      #index-main {
+        height: 90vh;
+      }
+
+      h3 {
+        font-family: "Staatliches", cursive;
+        color: var(--lightest-gray);
+        margin: 0;
+        font-size: 1.45rem;
+      }
+
+      .description-container {
+        display: flex;
+        justify-self: center;
+        align-items: center;
+      }
+
+      .image-container {
+        height: 80%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .image-indicator-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image-indicator-container {
+        height: 15px;
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #left-arrow {
+        margin-left: 0.5rem;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      #right-arrow {
+        margin-right: 0.5rem;
+      }
+
+      footer {
+        margin-bottom: 10vh;
+        margin-top: 10vh;
+      }
+
+      #google-play {
+        width: 12rem;
+      }
+
+      #app-store {
+        width: 10.5rem;
+      }
+
+      @media only screen and (max-width: 700px) {
+        #image {
+          max-width: 85%;
+        }
+
+        #desktop-nav {
+          display: none;
+        }
+
+        #mobile-icon-container {
+          display: flex;
+        }
+
+        #left-arrow,
+        #right-arrow {
+          height: 2rem;
+        }
+
+        h3 {
+          font-size: 1.2rem;
+        }
+      }
+
+      @media only screen and (min-width: 701px) {
+        #mobile-nav {
+          display: none;
+        }
+
+        #mobile-icon-container {
+          display: none;
+        }
+      }
+    </style>
     <title>Tenso</title>
   </head>
   <body>
@@ -278,7 +384,7 @@
         </li>
       </ul>
     </nav>
-    <main>
+    <main id="index-main">
       <div class="description-container">
         <h3 id="header">Clear workout guidance</h3>
       </div>

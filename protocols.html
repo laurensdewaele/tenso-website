@@ -1,0 +1,359 @@
+<!--
+
+    Author:
+    https://laurens.codes
+
+    -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Laurens Dewaele" />
+    <meta name="description" content="Tenso landing page" />
+    <meta name="keywords" content="tenso, hangboard, mobile app" />
+    <meta name="theme-color" content="" />
+    <meta name="color-scheme" content="normal" />
+    <meta name="robots" content="index,follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png" />
+    <link href="./assets/styles/style.css" rel="stylesheet" type="text/css" />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-YDRMPDMHZZ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-YDRMPDMHZZ");
+    </script>
+    <script>
+      const loadMenuToggle = () => {
+        const mobileIconContainer = document.getElementById(
+          "mobile-icon-container"
+        );
+        const hamburgerIcon = document.getElementById("hamburger-icon");
+        const closeIcon = document.getElementById("close-icon");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const toggle = () => {
+          hamburgerIcon.classList.toggle("hide");
+          closeIcon.classList.toggle("reveal");
+          mobileMenu.classList.toggle("open");
+        };
+        mobileIconContainer.addEventListener("click", toggle);
+      };
+
+      const loadCardToggle = () => {
+        const toggle = card => {
+          console.log("toggle triggered");
+          card.classList.toggle("open");
+        };
+
+        const cards = document.getElementsByClassName("card");
+        for (const card of cards) {
+          card.addEventListener("click", () => toggle(card));
+        }
+      };
+
+      window.onload = () => {
+        loadMenuToggle();
+        loadCardToggle();
+      };
+    </script>
+    <style>
+      main {
+        width: 100%;
+        padding-left: 0.4rem;
+        padding-right: 0.4rem;
+      }
+
+      #main-container {
+        width: 100%;
+        max-width: 27rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .card {
+        background: var(--background-white);
+        border-radius: 5px;
+        padding: 1.25rem;
+        margin-top: 2rem;
+      }
+
+      .card-content {
+        margin-top: 1rem;
+        display: none;
+      }
+
+      .card.open > .card-content {
+        display: block;
+      }
+
+      .card-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card h3 {
+        font-family: "Staatliches", cursive;
+        font-size: 1.25rem;
+        color: var(--black);
+        margin: 1rem 0 0;
+        padding: 0;
+      }
+
+      .row {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+      }
+
+      .row h4 {
+        flex: 10;
+        font-family: "Staatliches", cursive;
+        font-size: 1rem;
+        color: var(--black);
+        margin: 0;
+        padding: 0;
+      }
+
+      .row-content {
+        flex: 19;
+      }
+
+      .row-content p {
+        font-family: "latoregular", sans-serif;
+        color: var(--black);
+        font-size: 0.85rem;
+      }
+
+      #picture-icon {
+        margin-right: 1rem;
+      }
+
+      @media only screen and (min-width: 460px) {
+        .card h3 {
+          font-size: 1.5rem;
+        }
+
+        .row h4 {
+          font-size: 1.2rem;
+        }
+
+        .row-content p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+    <title>Tenso</title>
+  </head>
+  <body>
+    <div id="mobile-icon-container">
+      <svg
+        id="hamburger-icon"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="20" height="2" rx="1" fill="#DC5858" />
+        <rect y="9" width="20" height="2" rx="1" fill="#DC5858" />
+        <rect y="18" width="20" height="2" rx="1" fill="#DC5858" />
+      </svg>
+      <svg
+        id="close-icon"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          width="25.9628"
+          height="2.16357"
+          rx="1.08178"
+          transform="matrix(0.704904 0.709303 -0.704904 0.709303 1.69824 0)"
+          fill="#DC5858"
+        />
+        <rect
+          width="25.9628"
+          height="2.16357"
+          rx="1.08178"
+          transform="matrix(0.704904 -0.709303 0.704904 0.709302 0 18.4654)"
+          fill="#DC5858"
+        />
+      </svg>
+    </div>
+    <nav role="navigation" id="mobile-nav">
+      <h1><a href="./index.html">Tenso</a></h1>
+      <ul id="mobile-menu">
+        <li><a href="./index.html">home</a></li>
+        <li><a href="./protocols.html" class="nav-underline">protocols</a></li>
+        <li>
+          <a href="mailto:hello.tenso.app@gmail.com">contact</a>
+        </li>
+      </ul>
+    </nav>
+    <nav role="navigation" id="desktop-nav">
+      <div class="title-container">
+        <h1><a href="./index.html">Tenso</a></h1>
+        <h2>Powerful hangboard tooling</h2>
+      </div>
+      <ul>
+        <li><a href="./index.html">home</a></li>
+        <li><a href="./protocols.html" class="nav-underline">protocols</a></li>
+        <li>
+          <a href="mailto:hello.tenso.app@gmail.com">contact</a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <div id="main-container">
+        <div class="card open">
+          <div class="card-top">
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="30" height="30" rx="5" fill="#9B59B6" />
+              <g clip-path="url(#clip0)">
+                <path
+                  d="M5.79983 24.4057C5.59486 24.4057 5.39033 24.3277 5.23433 24.1713C4.92189 23.8588 4.92189 23.3527 5.23433 23.0407L22.0399 6.23465C22.3524 5.92178 22.859 5.92178 23.171 6.23465C23.4838 6.54709 23.4838 7.05366 23.171 7.36566L6.36533 24.1713C6.20933 24.3277 6.0048 24.4057 5.79983 24.4057Z"
+                  fill="#FDFDFD"
+                />
+                <path
+                  d="M2.79929 19.2456C2.59432 19.2456 2.38978 19.1676 2.23335 19.0112C1.92091 18.6987 1.92091 18.1922 2.23335 17.8797C3.66726 16.4458 4.97723 15.8534 6.24387 15.2801C7.66131 14.6388 9.12685 13.9754 11.05 12.0527C12.9727 10.1295 13.6357 8.66397 14.2775 7.24653C14.8508 5.97989 15.4432 4.66992 16.8771 3.23644C17.1899 2.92357 17.6961 2.92401 18.0081 3.23644C18.3209 3.54888 18.3209 4.05545 18.0085 4.36788C16.7809 5.59552 16.2964 6.66673 15.7352 7.90693C15.0674 9.38287 14.3104 11.0555 12.1814 13.185C10.052 15.3139 8.37935 16.071 6.90341 16.7387C5.6632 17.2999 4.59243 17.7844 3.36436 19.012C3.20879 19.168 3.00382 19.2456 2.79929 19.2456Z"
+                  fill="#FDFDFD"
+                />
+                <path
+                  d="M11.5567 28.0008C11.3517 28.0008 11.1472 27.9228 10.9912 27.7668C10.6787 27.4544 10.6787 26.9474 10.9912 26.6354C12.2188 25.4077 12.7037 24.3365 13.2649 23.0967C13.9326 21.6208 14.6897 19.9481 16.8187 17.8187C18.9481 15.6897 20.6207 14.9327 22.0967 14.2649C23.3369 13.7038 24.4081 13.2193 25.6357 11.9917C25.9482 11.6792 26.4543 11.6792 26.7668 11.9917C27.0792 12.3041 27.0792 12.8107 26.7668 13.1231C25.3328 14.5566 24.0233 15.1494 22.7562 15.7227C21.3388 16.364 19.8732 17.0274 17.9497 18.9502C16.027 20.8733 15.3635 22.3388 14.7226 23.7558C14.1493 25.0229 13.5569 26.3329 12.123 27.7668C11.9662 27.9232 11.7612 28.0008 11.5567 28.0008Z"
+                  fill="#FDFDFD"
+                />
+                <path
+                  d="M3.7969 22.4053C3.59193 22.4053 3.3874 22.3268 3.2314 22.1708C2.91896 21.8584 2.91896 21.3514 3.2314 21.0394C4.81134 19.4595 6.01558 18.6348 7.29088 17.7621C8.72783 16.778 10.2137 15.7609 12.4861 13.4885C14.759 11.2157 15.7765 9.72978 16.7601 8.2924C17.6333 7.0171 18.4575 5.81286 20.0375 4.23335C20.3499 3.92091 20.8565 3.92091 21.1685 4.23335C21.4809 4.54578 21.4809 5.05235 21.1685 5.36436C19.6938 6.839 18.9099 7.98387 18.0801 9.19591C17.1029 10.6233 15.9949 12.2418 13.6172 14.6195C11.2399 16.9973 9.6218 18.1049 8.19439 19.0825C6.98235 19.9123 5.83704 20.6962 4.3624 22.1713C4.2064 22.3273 4.00187 22.4053 3.7969 22.4053Z"
+                  fill="#FDFDFD"
+                />
+                <path
+                  d="M8.39651 27.0042C8.19154 27.0042 7.98701 26.9262 7.83101 26.7698C7.51857 26.4573 7.51857 25.9512 7.83101 25.6392C9.30565 24.1641 10.0896 23.0188 10.9194 21.8068C11.8966 20.3794 13.0046 18.7617 15.3823 16.384C17.7596 14.0063 19.3781 12.8983 20.8055 11.9211C22.0176 11.0913 23.1624 10.3074 24.6371 8.83271C24.9499 8.52028 25.4561 8.52028 25.7681 8.83271C26.0809 9.14515 26.0809 9.65172 25.7685 9.96415C24.1886 11.5441 22.9843 12.3683 21.7095 13.2415C20.2725 14.2256 18.7862 15.243 16.5138 17.5155C14.2409 19.7883 13.2239 21.2738 12.2398 22.7107C11.3666 23.986 10.5424 25.1907 8.96245 26.7698C8.80601 26.9262 8.60104 27.0042 8.39651 27.0042Z"
+                  fill="#FDFDFD"
+                />
+              </g>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M22.95 15.9175H22.05V19.8707H18V20.7492H22.05V24.7024H22.95V20.7492H27V19.8707H22.95V15.9175Z"
+                fill="#FDFDFD"
+              />
+              <defs>
+                <clipPath id="clip0">
+                  <rect
+                    width="25"
+                    height="25"
+                    fill="white"
+                    transform="translate(2 3)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+            <h3>Density hangs</h3>
+          </div>
+          <div class="card-content">
+            <div class="row">
+              <h4>Function</h4>
+              <div class="row-content">
+                <p>Strength endurance</p>
+              </div>
+            </div>
+            <div class="row">
+              <h4>Gain</h4>
+              <div class="row-content">
+                <p>Structural</p>
+              </div>
+            </div>
+            <div class="row">
+              <h4>Volume</h4>
+              <div class="row-content">
+                <p>High</p>
+              </div>
+            </div>
+            <div class="row">
+              <h4>Requirements</h4>
+              <div class="row-content">
+                <p>None</p>
+              </div>
+            </div>
+            <div class="row">
+              <h4>Popularized by</h4>
+              <div class="row-content">
+                <p>Dr. Tyler Nelson</p>
+              </div>
+            </div>
+            <div class="row">
+              <h4>Hang time</h4>
+              <div class="row-content">
+                <p>20 to 40 seconds</p>
+              </div>
+            </div>
+            <div class="row">
+              <h4>Description</h4>
+              <div class="row-content">
+                <p>
+                  Find an edge depth where you can hold a hang between 20 to 40
+                  seconds. The goal here is to hang until muscular failure.
+                </p>
+                <p>
+                  This protocol is perfect for beginners. It does not require
+                  additional weight, nor a pulley system to reduce weight.
+                </p>
+                <p>
+                  This protocol with its longer hang times and reduced
+                  intensity, is focused on tendon health and hypertrophy.
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <h4>More info</h4>
+              <div class="row-content">
+                <a
+                  onclick="event.stopPropagation();"
+                  target="_blank"
+                  href="https://www.trainingbeta.com/the-simplest-finger-training-program/"
+                  ><p>Article on trainingbeta.com</p></a
+                >
+              </div>
+            </div>
+            <div class="row">
+              <h4>Download</h4>
+              <div class="row-content">
+                <a
+                  onclick="event.stopPropagation();"
+                  id="picture-icon"
+                  href="./assets/protocols/density.png"
+                  ><img
+                    src="./assets/images/picture_icon.svg"
+                    alt="picture icon"
+                /></a>
+                <a
+                  onclick="event.stopPropagation();"
+                  href="./assets/protocols/density.pdf"
+                  ><img src="./assets/images/pdf_icon.svg" alt="pdf icon"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

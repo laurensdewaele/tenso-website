@@ -12,7 +12,6 @@
     <meta name="author" content="Laurens Dewaele" />
     <meta name="description" content="Tenso landing page" />
     <meta name="keywords" content="tenso, hangboard, mobile app" />
-    <!--    TODO: Set theme color-->
     <meta name="theme-color" content="" />
     <meta name="color-scheme" content="normal" />
     <meta name="robots" content="index,follow" />
@@ -34,6 +33,7 @@
     </script>
     <script>
       const loadMenuToggle = () => {
+        const mobileIconContainer = document.getElementById("mobile-icon-container");
         const hamburgerIcon = document.getElementById("hamburger-icon");
         const closeIcon = document.getElementById("close-icon");
         const mobileMenu = document.getElementById("mobile-menu");
@@ -42,9 +42,7 @@
           closeIcon.classList.toggle("reveal");
           mobileMenu.classList.toggle("open");
         };
-        hamburgerIcon.addEventListener("click", toggle);
-        mobileMenu.addEventListener("click", toggle);
-        closeIcon.addEventListener("click", toggle);
+        mobileIconContainer.addEventListener("click", toggle);
       };
     </script>
     <script>

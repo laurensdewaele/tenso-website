@@ -79,19 +79,21 @@ nav {
 }
 
 #mobile-nav {
-  min-height: 3rem;
+  min-height: 3.6rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 #mobile-icon-container {
-  height: 3rem;
+  height: 3.6rem;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  right: 1rem;
+  right: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 nav a {
@@ -115,7 +117,7 @@ nav h1 {
 }
 
 #mobile-nav h1 {
-  height: 3rem;
+  height: 3.6rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -140,6 +142,10 @@ nav > ul a {
   font-size: 1.5rem;
 }
 
+#mobile-nav ul a {
+  font-size: 1.4rem;
+}
+
 #desktop-nav ul {
   flex-direction: row;
 }
@@ -149,10 +155,11 @@ nav > ul a {
 }
 
 #mobile-menu {
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  margin-bottom: .5rem;
 }
 
 #mobile-menu {
@@ -190,7 +197,7 @@ main > * {
 }
 
 main {
-  height: 100vh;
+  height: 90vh;
 }
 
 h3 {
@@ -266,6 +273,14 @@ footer {
 
   #mobile-icon-container {
     display: flex;
+  }
+
+  #left-arrow, #right-arrow {
+    height: 2rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
   }
 }
 
